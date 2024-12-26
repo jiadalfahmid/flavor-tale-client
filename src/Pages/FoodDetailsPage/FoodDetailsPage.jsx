@@ -74,7 +74,7 @@ const FoodDetailsPage = () => {
               </p>
               <p className="text-base-content">
                 <span className="font-semibold">Purchase Count:</span>{" "}
-                {food.PurchaseCount || 0}
+                {food.PurchaseCount || 0} times
               </p>
             </div>
             <div className="mb-4">
