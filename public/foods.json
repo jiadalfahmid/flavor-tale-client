@@ -1,0 +1,83 @@
+[
+   {
+     "FoodName": "Spaghetti Carbonara",
+     "FoodImage": "https://www.allrecipes.com/thmb/Vg2cRidr2zcYhWGvPD8M18xM_WY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/11973-spaghetti-carbonara-ii-DDMFS-4x3-6edea51e421e4457ac0c3269f3be5157.jpg",
+     "FoodCategory": "Main Course",
+     "Quantity": 12,
+     "Price": 12.99,
+     "AddBy": {
+       "Name": "John Doe",
+       "Email": "john.doe@example.com"
+     },
+     "FoodOrigin": "Italy",
+     "Description": "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper. The creamy sauce is created by tossing hot pasta with the egg and cheese mixture, resulting in a rich and flavorful meal."
+   },
+   {
+     "FoodName": "Chicken Tikka Masala",
+     "FoodImage": "https://www.seriouseats.com/thmb/DbQHUK2yNCALBnZE-H1M2AKLkok=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/chicken-tikka-masala-for-the-grill-recipe-hero-2_1-cb493f49e30140efbffec162d5f2d1d7.JPG",
+     "FoodCategory": "Main Course",
+     "Quantity": 12,
+     "Price": 14.99,
+     "AddBy": {
+       "Name": "Jane Smith",
+       "Email": "jane.smith@example.com"
+     },
+     "FoodOrigin": "India",
+     "Description": "Tender chunks of grilled chicken simmered in a creamy tomato-based sauce, infused with a blend of traditional Indian spices. Served with basmati rice or naan bread."
+   },
+   {
+     "FoodName": "Sushi Platter",
+     "FoodImage": "https://images.stockcake.com/public/4/5/2/4525f7b0-131c-434c-89aa-1e63a8eb8839_large/exquisite-sushi-platter-stockcake.jpg",
+     "FoodCategory": "Appetizer",
+     "Quantity": 12,
+     "Price": 19.99,
+     "AddBy": {
+       "Name": "Alice Johnson",
+       "Email": "alice.johnson@example.com"
+     },
+     "FoodOrigin": "Japan",
+     "Description": "An assortment of fresh sushi, including nigiri and rolls, featuring tuna, salmon, and avocado. Served with soy sauce, pickled ginger, and wasabi."
+   },
+   {
+     "FoodName": "Beef Tacos",
+     "FoodImage": "https://danosseasoning.com/wp-content/uploads/2022/03/Beef-Tacos-1024x767.jpg",
+     "FoodCategory": "Main Course",
+     "Quantity": 3,
+     "Price": 10.99,
+     "AddBy": {
+       "Name": "Michael Brown",
+       "Email": "michael.brown@example.com"
+     },
+     "FoodOrigin": "Mexico",
+     "Description": "Soft corn tortillas filled with seasoned ground beef, topped with lettuce, cheese, and salsa. A zesty and satisfying meal."
+   },
+   {
+     "FoodName": "Caesar Salad",
+     "FoodImage": "https://cdn.loveandlemons.com/wp-content/uploads/2024/12/caesar-salad-500x500.jpg",
+     "FoodCategory": "Salad",
+     "Quantity": 12,
+     "Price": 8.99,
+     "AddBy": {
+       "Name": "Emily Davis",
+       "Email": "emily.davis@example.com"
+     },
+     "FoodOrigin": "Mexico",
+     "Description": "Crisp romaine lettuce tossed with creamy Caesar dressing, croutons, and Parmesan cheese. Optionally topped with grilled chicken for addd protein."
+   },
+   {
+     "FoodName": "Pad Thai",
+     "FoodImage": "https://www.pucheromix.com/wp-content/uploads/2023/09/pad-thai-receta.jpg",
+     "FoodCategory": "Main Course",
+     "Quantity": 12,
+     "Price": 13.99,
+     "AddBy": {
+       "Name": "David Wilson",
+       "Email": "david.wilson@example.com"
+     },
+     "FoodOrigin": "Thailand",
+     "Description": "Stir-fried rice noodles with shrimp, tofu, bean sprouts, and crushed peanuts, tossed in a tangy tamarind sauce. A harmonious balance of sweet, sour, and savory flavors."
+   }
+ ]
+ 
+ 
+ 
