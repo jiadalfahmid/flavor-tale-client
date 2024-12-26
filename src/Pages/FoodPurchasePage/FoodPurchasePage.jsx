@@ -113,7 +113,7 @@ const FoodPurchasePage = () => {
             <span className="font-semibold">Food Name:</span> {food.FoodName}
           </p>
           <p className="text-base-content">
-            <span className="font-semibold">Price:</span> ${food.Price.toFixed(2)}
+            <span className="font-semibold">Price:</span> ${food.Price}
           </p>
           <p className="text-base-content">
             <span className="font-semibold">Quantity Available:</span> {food.Quantity} pcs

@@ -11,6 +11,7 @@ import PrivateRouter from "./PrivateRouter";
 import FoodPurchasePage from "../Pages/FoodPurchasePage/FoodPurchasePage";
 import AddFoodPage from "../Pages/AddFoodPage/AddFoodPage";
 import MyFoodsPage from "../Pages/MyFoodsPage/MyFoodsPage";
+import MyOrdersPage from "../Pages/MyOrdersPage/MyOrdersPage";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path:"/my-foods", 
         element:<PrivateRouter><MyFoodsPage /></PrivateRouter>,
+      },
+      {
+        path:"/my-orders", 
+        element:<PrivateRouter><MyOrdersPage /></PrivateRouter>,
       },
       {
         path: "/login",

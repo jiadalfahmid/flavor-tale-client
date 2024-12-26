@@ -21,7 +21,9 @@ const MyFoodsPage = () => {
   // Fetch food items added by the logged-in user
   const fetchMyFoods = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/foods/email?email=${user?.email}`);
+      const response = await axios.get(`http://localhost:5000/foods/email?email=${user?.email}`,{
+        withCredentials: true,
+      });
       setFoods(response.data); // Corrected the reference here
     } catch (error) {
       console.error("Failed to fetch foods:", error);
@@ -70,6 +72,7 @@ const MyFoodsPage = () => {
             Price: price,
             Quantity: quantity,
             Description: description,
+            withCredentials: true,
           });
 
           toast.success("Food item updated successfully!");

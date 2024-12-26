@@ -13,7 +13,9 @@ const FoodDetailsPage = () => {
 
   const fetchFoodDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/foods/${id}`);
+      const response = await axios.get(`http://localhost:5000/foods/${id}`,{
+        withCredentials: true,
+      });
       setFood(response.data);
     } catch (error) {
       console.error("Failed to fetch food details:", error);
@@ -66,7 +68,7 @@ const FoodDetailsPage = () => {
                 <span className="font-semibold">Origin:</span> {food.FoodOrigin}
               </p>
               <p className="text-base-content">
-                <span className="font-semibold">Price:</span> ${food.Price.toFixed(2)}
+                <span className="font-semibold">Price:</span> ${food.Price2}
               </p>
               <p className="text-base-content">
                 <span className="font-semibold">Quantity Available:</span>{" "}
