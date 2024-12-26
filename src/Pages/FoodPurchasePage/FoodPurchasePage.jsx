@@ -1,121 +1,124 @@
-import React, { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-hot-toast"; 
-import UseAuth from "../../Hooks/UseAuth";
+import { toast } from "react-hot-toast";
 
 const FoodPurchasePage = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
-  const location = useLocation();
-  const { food } = location.state || {}; 
-  const { user } = UseAuth();
+  const [food, setFood] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
-  const loggedInUser = {
-    name: user?.name || "Guest",
-    email: user?.email || "",
+  useEffect(() => {
+    fetchFoodDetails();
+  }, []);
+
+  const fetchFoodDetails = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5000/foods/${id}`);
+      setFood(response.data);
+    } catch (error) {
+      console.error("Failed to fetch food details:", error);
+    }
   };
 
   const handlePurchase = async () => {
-    const purchaseDetails = {
-      foodName: food?.FoodName,
-      price: food?.Price,
-      quantity: parseInt(quantity, 10),
-      buyerName: loggedInUser.name,
-      buyerEmail: loggedInUser.email,
+    const purchaseData = {
+      foodName: food.FoodName,
+      price: food.Price,
+      quantity,
+      buyerName: user.name,
+      buyerEmail: user.email,
       buyingDate: Date.now(),
     };
 
     try {
-      await axios.post("http://localhost:5000/foods", purchaseDetails);
-      toast.success("Purchase successful!"); 
-      navigate("/");
+      await axios.post("http://localhost:5000/purchases", purchaseData);
+      toast.success("Purchase successful!");
+      navigate("/confirmation");
     } catch (error) {
-      console.error("Error while purchasing:", error);
-      toast.error("Failed to complete purchase. Try again!"); 
+      console.error("Failed to complete the purchase:", error);
+      toast.error("Failed to complete the purchase.");
     }
   };
 
+  if (!food) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-base">
+        <p className="text-base-content text-xl">Loading food details...</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-2xl font-bold mb-4 text-center">
-          Purchase {food?.FoodName}
-        </h2>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handlePurchase();
-          }}
-          className="space-y-4"
-        >
-          {/* Food Name */}
-          <div>
-            <label className="block font-medium text-gray-700 mb-1">Food Name</label>
-            <input
-              type="text"
-              value={food?.FoodName || ""}
-              readOnly
-              className="w-full px-4 py-2 border rounded-md bg-gray-100 cursor-not-allowed"
-            />
-          </div>
+    <div className="p-6 bg-base min-h-screen">
+      <div
+        className="bg-gradient-to-r text-white text-center py-12 mb-8"
+        style={{ backgroundImage: "linear-gradient(to right, #FF5733, #FFD700)" }}
+      >
+        <h1 className="text-4xl font-bold">Purchase {food.FoodName}</h1>
+      </div>
 
-          {/* Price */}
-          <div>
-            <label className="block font-medium text-gray-700 mb-1">Price</label>
-            <input
-              type="text"
-              value={`$${food?.Price?.toFixed(2)}`}
-              readOnly
-              className="w-full px-4 py-2 border rounded-md bg-gray-100 cursor-not-allowed"
-            />
-          </div>
+      <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+        <div className="p-6">
+          {/* Food Information */}
+          <h2 className="text-2xl font-bold mb-4 text-base-content">
+            Food Details
+          </h2>
+          <p className="text-base-content">
+            <span className="font-semibold">Food Name:</span> {food.FoodName}
+          </p>
+          <p className="text-base-content">
+            <span className="font-semibold">Price:</span> ${food.Price.toFixed(2)}
+          </p>
 
-          {/* Quantity */}
-          <div>
-            <label className="block font-medium text-gray-700 mb-1">Quantity</label>
+          {/* Purchase Form */}
+          <h2 className="text-2xl font-bold mt-6 mb-4 text-base-content">
+            Purchase Information
+          </h2>
+          <div className="mb-4">
+            <label className="block text-base-content mb-2 font-semibold">
+              Quantity
+            </label>
             <input
               type="number"
-              min="1"
-              max={food?.Quantity || 1}
               value={quantity}
+              min="1"
+              max={food.Quantity}
+              className="w-full px-4 py-2 border rounded-md text-base-content"
               onChange={(e) => setQuantity(e.target.value)}
-              className="w-full px-4 py-2 border rounded-md"
-              required
             />
           </div>
-
-          {/* Buyer Name */}
-          <div>
-            <label className="block font-medium text-gray-700 mb-1">Buyer Name</label>
+          <div className="mb-4">
+            <label className="block text-base-content mb-2 font-semibold">
+              Buyer Name
+            </label>
             <input
               type="text"
-              value={loggedInUser.name}
+              value={user.name}
               readOnly
-              className="w-full px-4 py-2 border rounded-md bg-gray-100 cursor-not-allowed"
+              className="w-full px-4 py-2 border rounded-md bg-gray-200 text-base-content"
             />
           </div>
-
-          {/* Buyer Email */}
-          <div>
-            <label className="block font-medium text-gray-700 mb-1">Buyer Email</label>
+          <div className="mb-4">
+            <label className="block text-base-content mb-2 font-semibold">
+              Buyer Email
+            </label>
             <input
               type="email"
-              value={loggedInUser.email}
+              value={user.email}
               readOnly
-              className="w-full px-4 py-2 border rounded-md bg-gray-100 cursor-not-allowed"
+              className="w-full px-4 py-2 border rounded-md bg-gray-200 text-base-content"
             />
           </div>
 
-          {/* Purchase Button */}
           <button
-            type="submit"
             className="w-full px-4 py-2 rounded-md text-white font-semibold bg-gradient-to-r from-red-500 to-yellow-500 hover:shadow-lg"
+            onClick={handlePurchase}
           >
             Purchase
           </button>
-        </form>
+        </div>
       </div>
     </div>
   );
