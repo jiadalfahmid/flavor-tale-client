@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import UseAuth from "./../../Hooks/UseAuth";
@@ -11,6 +11,7 @@ const FoodPurchasePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const { user } = UseAuth();
+  const navigate = useNavigate(); // Initialize the useNavigate hook
 
   useEffect(() => {
     fetchFoodDetails();
@@ -70,6 +71,9 @@ const FoodPurchasePage = () => {
         PurchaseCount: updatedPurchaseCount,
       }));
       setQuantity(1); // Reset quantity
+
+      // Navigate to the 'All Foods' page after successful purchase
+      navigate("/all-foods");  // Adjust the path based on your routing setup
     } catch (err) {
       console.error("Failed to complete the purchase:", err);
       toast.error("Failed to complete the purchase. Please try again.");
@@ -125,9 +129,8 @@ const FoodPurchasePage = () => {
               type="number"
               value={quantity}
               min="1"
-              max={food.Quantity}
               className="w-full px-4 py-2 border rounded-md text-base-content"
-              onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
+              onChange={(e) => setQuantity(Number(e.target.value))}
             />
           </div>
           <div className="mb-4">

@@ -38,7 +38,7 @@ const AllFoodsPage = () => {
       {/* Page Title */}
       <div
         className="bg-gradient-to-r text-white text-center py-12 mb-8"
-        style={{ backgroundImage: "linear-gradient(to right, #FF5733, #FFD700)" }} // Red to Yellow gradient
+        style={{ backgroundImage: "linear-gradient(to right, #FF5733, #FFD700)" }} 
       >
         <h1 className="text-4xl font-bold">All Foods</h1>
       </div>
@@ -80,7 +80,7 @@ const AllFoodsPage = () => {
               <span className="font-semibold">Category:</span> {food.FoodCategory}
             </p>
             <p className="text-base-content mb-1">
-              <span className="font-semibold">Price:</span> ${food.Price.toFixed(2)}
+              <span className="font-semibold">Price:</span> ${food.Price}
             </p>
             <p className="text-base-content mb-2">
               <span className="font-semibold">Quantity:</span>{" "}
