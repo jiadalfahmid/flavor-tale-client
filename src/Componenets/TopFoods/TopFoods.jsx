@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const SkeletonCard = () => (
   <div className="bg-base-100 shadow-md rounded-lg p-4 hover:shadow-lg">
@@ -99,6 +99,18 @@ const TopFoods = () => {
             ))
           )}
         </div>
+          <div className="flex p-4 justify-center">
+            <Link
+            to={'/all-foods'}
+                    className="px-4 py-2 rounded-md text-white font-semibold hover:shadow-lg"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to right, #FF5733, #FFD700)",
+                    }}
+                  >
+                    See All Foods
+                  </Link>
+          </div>
       </section>
     </div>
   );
