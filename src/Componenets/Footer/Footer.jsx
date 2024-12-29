@@ -6,12 +6,11 @@ const Footer = () => {
       <footer className="footer footer-center bg-base-200 text-base-content p-10">
         <aside>
         <p className="normal-case text-xl font-bold text-base-content">
-            Sport<span className="text-orange-500 italic">i</span>fy
-          </p>
+            Flavor<span className="text-orange-500 italic">Tale</span></p>
           <p className="font-bold">
-            Bringing premium sports gear since 2005
+            Fine cuisine
           </p>
-          <p>info@sportify.com</p>
+          <p>info@flavortale.com</p>
           <p>Copyright © {new Date().getFullYear()} - All rights reserved</p>
         </aside>
         <nav>

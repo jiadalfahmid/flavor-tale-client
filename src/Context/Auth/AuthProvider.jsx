@@ -1,6 +1,6 @@
+import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-import app from './../../Firebase/firebase.config';
-import axios from 'axios';
+import app from "./../../Firebase/firebase.config";
 
 import {
   createUserWithEmailAndPassword,
@@ -107,33 +107,38 @@ const AuthProvider = ({ children }) => {
 
   // Observe Auth State Changes
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currentUser => {
-        setUser(currentUser);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
 
-        if (currentUser?.email) {
-            const user = { email: currentUser.email };
+      if (currentUser?.email) {
+        const user = { email: currentUser.email };
 
-            axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
-                .then(res => {
-                    setLoading(false);
-                })
-
-        }
-        else {
-            axios.post('http://localhost:5000/logout', {}, {
-                withCredentials: true
-            })
-            .then(res => {
-                setLoading(false);
-            })
-        }
-        
-    })
+        axios
+          .post(`${import.meta.env.VITE_API_BASE}jwt`, user, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            setLoading(false);
+          });
+      } else {
+        axios
+          .post(
+            `${import.meta.env.VITE_API_BASE}logout`,
+            {},
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
+            setLoading(false);
+          });
+      }
+    });
 
     return () => {
-        unsubscribe();
-    }
-}, [])
+      unsubscribe();
+    };
+  }, []);
 
   const authInfo = {
     user,

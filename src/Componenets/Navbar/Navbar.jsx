@@ -29,7 +29,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             `font-semibold px-3 py-2 rounded ${
               isActive
-                ? "bg-orange-500 text-white"
+                ? "bg-gradient-to-r from-red-500 to-yellow-500 text-white"
                 : "text-base-content hover:bg-orange-500 hover:text-white"
             }`
           }
@@ -43,7 +43,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             `font-semibold px-3 py-2 rounded ${
               isActive
-                ? "bg-orange-500 text-white"
+                ? "bg-gradient-to-r from-red-500 to-yellow-500 text-white"
                 : "text-base-content hover:bg-orange-500 hover:text-white"
             }`
           }
@@ -57,7 +57,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             `font-semibold px-3 py-2 rounded ${
               isActive
-                ? "bg-orange-500 text-white"
+                ? "bg-gradient-to-r from-red-500 to-yellow-500 text-white"
                 : "text-base-content hover:bg-orange-500 hover:text-white"
             }`
           }
@@ -94,7 +94,7 @@ const Navbar = () => {
             </ul>
           </div>
           <p className="normal-case text-xl font-bold text-base-content">
-            Flavor<span className="text-orange-500 italic"> Tale</span>
+            Flavor<span className="text-orange-500 italic">Tale</span>
           </p>
         </div>
 
@@ -104,7 +104,7 @@ const Navbar = () => {
 
         <div className="navbar-end flex items-center space-x-4">
           <button
-            className="text-2xl cursor-pointer text-base-content btn hover:bg-base-300 btn-circle btn-ghost hover:text-orange-500 swap swap-rotate"
+            className="text-2xl cursor-pointer text-base-content btn hover:bg-base-300 btn-circle btn-ghost hover:text-orange-500"
             onClick={toggleDarkMode}
           >
             {darkMode ? <FaSun /> : <FaMoon />}
@@ -154,7 +154,7 @@ const Navbar = () => {
               </div>
               <button
                 onClick={handleLogout}
-                className="btn bg-orange-500 hover:bg-orange-600 text-white"
+                className="btn bg-gradient-to-r from-red-500 to-yellow-500 hover:bg-orange-600 text-white"
               >
                 Log Out
               </button>
@@ -163,13 +163,13 @@ const Navbar = () => {
             <>
               <NavLink
                 to="/login"
-                className="btn bg-orange-500 hover:bg-orange-600 text-white"
+                className="btn bg-gradient-to-r from-red-500 to-yellow-500 hover:bg-orange-600 text-white"
               >
                 Login
               </NavLink>
               <NavLink
                 to="/register"
-                className="btn bg-orange-500 hover:bg-orange-600 text-white"
+                className="btn bg-gradient-to-r from-red-500 to-yellow-500 hover:bg-orange-600 text-white"
               >
                 Register
               </NavLink>

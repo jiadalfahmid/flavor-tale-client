@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import UseAuth from "./../../Hooks/UseAuth";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import moment from "moment";
+import UseAuth from "./../../Hooks/UseAuth";
 
 const MySwal = withReactContent(Swal);
 
@@ -21,9 +21,10 @@ const MyOrdersPage = () => {
   const fetchOrders = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/purchases/email?email=${user.email}`,{
-        withCredentials: true,
-      }
+        `${import.meta.env.VITE_API_BASE}purchases/email?email=${user.email}`,
+        {
+          withCredentials: true,
+        }
       );
       setOrders(response.data);
     } catch (error) {
@@ -43,7 +44,9 @@ const MyOrdersPage = () => {
 
     if (confirmDelete.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:5000/purchases/${orderId}`);
+        await axios.delete(
+          `${import.meta.env.VITE_API_BASE}purchases/${orderId}`
+        );
         toast.success("Order deleted successfully!");
         fetchOrders();
       } catch (error) {
@@ -63,7 +66,9 @@ const MyOrdersPage = () => {
           <table className="table-auto w-full border-collapse border border-base-300 bg-base-100">
             <thead>
               <tr className="bg-base-300">
-                <th className="border border-base-300 px-4 py-2 text-left">#</th>
+                <th className="border border-base-300 px-4 py-2 text-left">
+                  #
+                </th>
                 <th className="border border-base-300 px-4 py-2 text-left">
                   Food Name
                 </th>
@@ -106,9 +111,7 @@ const MyOrdersPage = () => {
                     ${(order.price * order.quantity).toFixed(2)}
                   </td>
                   <td className="border border-base-300 px-4 py-2">
-                    {moment(order.buyingDate).format(
-                      "MMMM Do YYYY, h:mm:ss a"
-                    )}
+                    {moment(order.buyingDate).format("MMMM Do YYYY, h:mm:ss a")}
                   </td>
                   <td className="border border-base-300 px-4 py-2 text-center">
                     <button

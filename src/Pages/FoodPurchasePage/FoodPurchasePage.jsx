@@ -1,8 +1,53 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
+import { useNavigate, useParams } from "react-router-dom";
 import UseAuth from "./../../Hooks/UseAuth";
+
+
+const SkeletonPurchase = () => (
+  <div className="p-6 min-h-screen">
+    {/* Header Skeleton */}
+    <div className="skeleton py-12 mb-8">
+      <div className="skeleton h-12 w-1/2 mx-auto"></div>
+    </div>
+
+    {/* Content Container Skeleton */}
+    <div className="max-w-4xl mx-auto shadow-md rounded-lg overflow-hidden">
+      <div className="p-6">
+        {/* Food Details Section */}
+        <div className="skeleton h-8 w-48 mb-4"></div>
+        <div className="skeleton h-4 w-3/4 mb-2"></div>
+        <div className="skeleton h-4 w-1/2 mb-2"></div>
+        <div className="skeleton h-4 w-2/3 mb-2"></div>
+
+        {/* Purchase Form Section */}
+        <div className="skeleton h-8 w-64 mt-6 mb-4"></div>
+        
+        {/* Quantity Input */}
+        <div className="mb-4">
+          <div className="skeleton h-4 w-24 mb-2"></div>
+          <div className="skeleton h-10 w-full"></div>
+        </div>
+
+        {/* Buyer Name Input */}
+        <div className="mb-4">
+          <div className="skeleton h-4 w-32 mb-2"></div>
+          <div className="skeleton h-10 w-full"></div>
+        </div>
+
+        {/* Buyer Email Input */}
+        <div className="mb-4">
+          <div className="skeleton h-4 w-32 mb-2"></div>
+          <div className="skeleton h-10 w-full"></div>
+        </div>
+
+        {/* Purchase Button */}
+        <div className="skeleton h-10 w-full"></div>
+      </div>
+    </div>
+  </div>
+);
 
 const FoodPurchasePage = () => {
   const { id } = useParams();
@@ -11,7 +56,7 @@ const FoodPurchasePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const { user } = UseAuth();
-  const navigate = useNavigate(); // Initialize the useNavigate hook
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchFoodDetails();
@@ -20,7 +65,9 @@ const FoodPurchasePage = () => {
   const fetchFoodDetails = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:5000/foods/${id}`);
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_BASE}foods/${id}`
+      );
       setFood(response.data);
       setLoading(false);
     } catch (err) {
@@ -46,7 +93,7 @@ const FoodPurchasePage = () => {
 
     try {
       // Update food quantity and purchase count in the database
-      await axios.put(`http://localhost:5000/foods/${id}`, {
+      await axios.put(`${import.meta.env.VITE_API_BASE}foods/${id}`, {
         Quantity: updatedQuantity,
         PurchaseCount: updatedPurchaseCount,
       });
@@ -62,7 +109,10 @@ const FoodPurchasePage = () => {
         buyingDate: new Date().toISOString(),
       };
 
-      await axios.post("http://localhost:5000/purchases", purchaseData);
+      await axios.post(
+        `${import.meta.env.VITE_API_BASE}purchases`,
+        purchaseData
+      );
 
       toast.success("Purchase successful!");
       setFood((prev) => ({
@@ -73,20 +123,18 @@ const FoodPurchasePage = () => {
       setQuantity(1); // Reset quantity
 
       // Navigate to the 'All Foods' page after successful purchase
-      navigate("/all-foods");  // Adjust the path based on your routing setup
+      navigate("/all-foods"); // Adjust the path based on your routing setup
     } catch (err) {
       console.error("Failed to complete the purchase:", err);
       toast.error("Failed to complete the purchase. Please try again.");
     }
   };
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen bg-base">
-        <p className="text-base-content text-xl">Loading food details...</p>
-      </div>
-    );
-  }
+  
+
+    if (loading) {
+      return <SkeletonPurchase />;
+    }
 
   if (error) {
     return (
@@ -100,7 +148,9 @@ const FoodPurchasePage = () => {
     <div className="p-6 bg-base min-h-screen">
       <div
         className="bg-gradient-to-r text-white text-center py-12 mb-8"
-        style={{ backgroundImage: "linear-gradient(to right, #FF5733, #FFD700)" }}
+        style={{
+          backgroundImage: "linear-gradient(to right, #FF5733, #FFD700)",
+        }}
       >
         <h1 className="text-4xl font-bold">Purchase {food.FoodName}</h1>
       </div>
@@ -108,7 +158,9 @@ const FoodPurchasePage = () => {
       <div className="max-w-4xl mx-auto bg-base-200 shadow-md rounded-lg overflow-hidden">
         <div className="p-6">
           {/* Food Information */}
-          <h2 className="text-2xl font-bold mb-4 text-base-content">Food Details</h2>
+          <h2 className="text-2xl font-bold mb-4 text-base-content">
+            Food Details
+          </h2>
           <p className="text-base-content">
             <span className="font-semibold">Food Name:</span> {food.FoodName}
           </p>
@@ -116,11 +168,14 @@ const FoodPurchasePage = () => {
             <span className="font-semibold">Price:</span> ${food.Price}
           </p>
           <p className="text-base-content">
-            <span className="font-semibold">Quantity Available:</span> {food.Quantity} pcs
+            <span className="font-semibold">Quantity Available:</span>{" "}
+            {food.Quantity} pcs
           </p>
 
           {/* Purchase Form */}
-          <h2 className="text-2xl font-bold mt-6 mb-4 text-base-content">Purchase Information</h2>
+          <h2 className="text-2xl font-bold mt-6 mb-4 text-base-content">
+            Purchase Information
+          </h2>
           <div className="mb-4">
             <label className="block text-base-content mb-2 font-semibold">
               Quantity
@@ -134,7 +189,9 @@ const FoodPurchasePage = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-base-content mb-2 font-semibold">Buyer Name</label>
+            <label className="block text-base-content mb-2 font-semibold">
+              Buyer Name
+            </label>
             <input
               type="text"
               value={user.displayName}
@@ -143,7 +200,9 @@ const FoodPurchasePage = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-base-content mb-2 font-semibold">Buyer Email</label>
+            <label className="block text-base-content mb-2 font-semibold">
+              Buyer Email
+            </label>
             <input
               type="email"
               value={user.email}

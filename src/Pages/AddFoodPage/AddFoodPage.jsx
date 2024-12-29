@@ -1,12 +1,12 @@
-import React, { useState } from "react";
 import axios from "axios";
+import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import UseAuth from "./../../Hooks/UseAuth"; // Assuming this hook gives the logged-in user data
 
 const AddFoodPage = () => {
   const { user } = UseAuth();
   const [foodName, setFoodName] = useState("");
-  const [foodImage, setFoodImage] = useState(""); 
+  const [foodImage, setFoodImage] = useState("");
   const [foodCategory, setFoodCategory] = useState("");
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState();
@@ -18,7 +18,14 @@ const AddFoodPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!foodName || !foodImage || !foodCategory || !price || !foodOrigin || !description) {
+    if (
+      !foodName ||
+      !foodImage ||
+      !foodCategory ||
+      !price ||
+      !foodOrigin ||
+      !description
+    ) {
       toast.error("Please fill in all fields.");
       return;
     }
@@ -37,13 +44,16 @@ const AddFoodPage = () => {
       },
       FoodOrigin: foodOrigin,
       Description: description,
-      PurchaseCount: 0,  
+      PurchaseCount: 0,
     };
 
-    console.log(formData)
+    console.log(formData);
 
     try {
-      const response = await axios.post("http://localhost:5000/foods", formData);
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_BASE}foods`,
+        formData
+      );
 
       if (response.status === 201) {
         toast.success("Food item added successfully!");
@@ -67,18 +77,30 @@ const AddFoodPage = () => {
 
   return (
     <div className="p-6 bg-base min-h-screen">
-      <div className="bg-gradient-to-r text-white text-center py-12 mb-8" style={{ backgroundImage: "linear-gradient(to right, #FF5733, #FFD700)" }}>
+      <div
+        className="bg-gradient-to-r text-white text-center py-12 mb-8"
+        style={{
+          backgroundImage: "linear-gradient(to right, #FF5733, #FFD700)",
+        }}
+      >
         <h1 className="text-4xl font-bold">Add New Food Item</h1>
       </div>
 
       <div className="max-w-4xl mx-auto bg-base-200 shadow-md rounded-lg overflow-hidden">
         <div className="p-6">
           {/* Add Food Form */}
-          <h2 className="text-2xl font-bold mb-4 text-base-content">Food Details</h2>
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <h2 className="text-2xl font-bold mb-4 text-base-content">
+            Food Details
+          </h2>
+          <form
+            onSubmit={handleSubmit}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
             {/* Left Column */}
             <div>
-              <label className="block text-base-content mb-2 font-semibold">Food Name</label>
+              <label className="block text-base-content mb-2 font-semibold">
+                Food Name
+              </label>
               <input
                 type="text"
                 value={foodName}
@@ -89,7 +111,9 @@ const AddFoodPage = () => {
             </div>
 
             <div>
-              <label className="block text-base-content mb-2 font-semibold">Food Category</label>
+              <label className="block text-base-content mb-2 font-semibold">
+                Food Category
+              </label>
               <input
                 type="text"
                 value={foodCategory}
@@ -100,7 +124,9 @@ const AddFoodPage = () => {
             </div>
 
             <div>
-              <label className="block text-base-content mb-2 font-semibold">Food Image URL</label>
+              <label className="block text-base-content mb-2 font-semibold">
+                Food Image URL
+              </label>
               <input
                 type="url"
                 value={foodImage}
@@ -111,7 +137,9 @@ const AddFoodPage = () => {
             </div>
 
             <div>
-              <label className="block text-base-content mb-2 font-semibold">Quantity</label>
+              <label className="block text-base-content mb-2 font-semibold">
+                Quantity
+              </label>
               <input
                 type="number"
                 value={quantity}
@@ -124,7 +152,9 @@ const AddFoodPage = () => {
 
             {/* Right Column */}
             <div>
-              <label className="block text-base-content mb-2 font-semibold">Price</label>
+              <label className="block text-base-content mb-2 font-semibold">
+                Price
+              </label>
               <input
                 type="number"
                 value={price}
@@ -136,7 +166,9 @@ const AddFoodPage = () => {
             </div>
 
             <div>
-              <label className="block text-base-content mb-2 font-semibold">Food Origin</label>
+              <label className="block text-base-content mb-2 font-semibold">
+                Food Origin
+              </label>
               <input
                 type="text"
                 value={foodOrigin}
@@ -147,7 +179,9 @@ const AddFoodPage = () => {
             </div>
 
             <div className="col-span-2">
-              <label className="block text-base-content mb-2 font-semibold">Description</label>
+              <label className="block text-base-content mb-2 font-semibold">
+                Description
+              </label>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}

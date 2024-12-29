@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import UseAuth from "./../../Hooks/UseAuth";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import UseAuth from "./../../Hooks/UseAuth";
 
 // Initialize SweetAlert2 with React
 const MySwal = withReactContent(Swal);
@@ -21,9 +21,12 @@ const MyFoodsPage = () => {
   // Fetch food items added by the logged-in user
   const fetchMyFoods = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/foods/email?email=${user?.email}`,{
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_BASE}foods/email?email=${user?.email}`,
+        {
+          withCredentials: true,
+        }
+      );
       setFoods(response.data); // Corrected the reference here
     } catch (error) {
       console.error("Failed to fetch foods:", error);
@@ -67,7 +70,7 @@ const MyFoodsPage = () => {
         const { foodName, price, quantity, description } = result.value;
 
         try {
-          await axios.put(`http://localhost:5000/foods/${food._id}`, {
+          await axios.put(`${import.meta.env.VITE_API_BASE}foods/${food._id}`, {
             FoodName: foodName,
             Price: price,
             Quantity: quantity,
@@ -81,7 +84,11 @@ const MyFoodsPage = () => {
           toast.error("Failed to update food item. Please try again.");
         }
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        MySwal.fire("Cancelled", "Your food item update is cancelled.", "error");
+        MySwal.fire(
+          "Cancelled",
+          "Your food item update is cancelled.",
+          "error"
+        );
       }
     });
   };
@@ -91,7 +98,9 @@ const MyFoodsPage = () => {
     <div className="p-6 bg-base-300 min-h-screen">
       <div
         className="bg-gradient-to-r text-white text-center py-12 mb-8"
-        style={{ backgroundImage: "linear-gradient(to right, #FF5733, #FFD700)" }} 
+        style={{
+          backgroundImage: "linear-gradient(to right, #FF5733, #FFD700)",
+        }}
       >
         <h1 className="text-4xl font-bold">My All Foods</h1>
       </div>
@@ -110,7 +119,8 @@ const MyFoodsPage = () => {
               />
               <h3 className="text-lg font-bold mb-2">{food.FoodName}</h3>
               <p className="text-base-content mb-1">
-                <span className="font-semibold">Category:</span> {food.FoodCategory}
+                <span className="font-semibold">Category:</span>{" "}
+                {food.FoodCategory}
               </p>
               <p className="text-base-content mb-1">
                 <span className="font-semibold">Price:</span> ${food.Price}
@@ -123,7 +133,8 @@ const MyFoodsPage = () => {
                 onClick={() => handleFoodUpdate(food)}
                 className="w-full text-center text-white p-4 rounded-lg"
                 style={{
-                  backgroundImage:"linear-gradient(to right, #FF5733, #FFD700)" 
+                  backgroundImage:
+                    "linear-gradient(to right, #FF5733, #FFD700)",
                 }}
               >
                 Update

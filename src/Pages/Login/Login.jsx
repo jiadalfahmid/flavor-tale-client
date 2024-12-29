@@ -101,7 +101,7 @@ const Login = () => {
           <div className="form-control mt-6">
             <button
               type="submit"
-              className="btn bg-orange-500 hover:bg-orange-600 text-white w-full"
+              className="btn bg-gradient-to-r from-red-500 to-yellow-500 hover:bg-orange-500 text-white w-full"
               disabled={loading}
             >
               {loading ? "Logging in..." : "Login"}
