@@ -57,9 +57,11 @@ const MyOrdersPage = () => {
 
   return (
     <div className="p-6 bg-base-200 min-h-screen">
-      <h1 className="text-4xl font-bold mb-8 text-center text-base-content">
-        My Orders
-      </h1>
+      <div
+        className="bg-gradient-to-r to-yellow-500 from-red-500 text-white text-center py-12 mb-8"
+      >
+        <h1 className="text-4xl font-bold">My Orders</h1>
+      </div>
 
       {orders.length > 0 ? (
         <div className="overflow-x-auto">

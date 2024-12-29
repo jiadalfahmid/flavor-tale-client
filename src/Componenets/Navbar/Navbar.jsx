@@ -126,7 +126,7 @@ const Navbar = () => {
                   />
                 </div>
                 {dropdownOpen && (
-                  <ul className="absolute top-16 bg-base-300 shadow-md rounded-md p-2 space-y-2">
+                  <ul className="absolute z-50 top-16 bg-base-300 shadow-md rounded-md p-2 space-y-2">
                     <li>
                       <NavLink
                         to="/my-foods"
