@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import UseAuth from "../../Hooks/UseAuth";
 
 const SkeletonDetails = () => (
   <div className="p-6 min-h-screen">
@@ -44,6 +45,7 @@ const FoodDetailsPage = () => {
   const navigate = useNavigate();
   const [food, setFood] = useState(null);
   const [loading, setLoading] = useState(true);
+  const {user} = UseAuth();
 
   useEffect(() => {
     fetchFoodDetails();
@@ -121,7 +123,7 @@ const FoodDetailsPage = () => {
                 <span className="font-semibold">Origin:</span> {food.FoodOrigin}
               </p>
               <p>
-                <span className="font-semibold">Price:</span> ${food.Price2}
+                <span className="font-semibold">Price:</span> ${food.Price}
               </p>
               <p>
                 <span className="font-semibold">Quantity Available:</span>{" "}
@@ -141,6 +143,10 @@ const FoodDetailsPage = () => {
             {food.Quantity === 0 ? (
               <p className="text-red-500 font-semibold text-lg">
                 This item is currently out of stock.
+              </p>
+            ) : food.AddBy.Email === user?.email ? (
+              <p className="text-red-500 font-semibold text-lg">
+                You can't purchase your own food.
               </p>
             ) : (
               <button

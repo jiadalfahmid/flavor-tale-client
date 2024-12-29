@@ -71,10 +71,7 @@ const AllFoodsPage = () => {
     <div className="p-6 bg-base-300">
       {/* Page Title */}
       <div
-        className="bg-gradient-to-r text-white text-center py-12 mb-8"
-        style={{
-          backgroundImage: "linear-gradient(to right, #FF5733, #FFD700)",
-        }}
+        className="bg-gradient-to-r to-yellow-500 from-red-500 text-white text-center py-12 mb-8"
       >
         <h1 className="text-4xl font-bold">All Foods</h1>
       </div>

@@ -1,12 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import UseAuth from "../../Hooks/UseAuth";
 
 const Navbar = () => {
   const { user, logout } = UseAuth();
   const [darkMode, setDarkMode] = useState(true);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
