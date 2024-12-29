@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import UseAuth from "./../../Hooks/UseAuth";
 
-// Initialize SweetAlert2 with React
 const MySwal = withReactContent(Swal);
 
 const MyFoodsPage = () => {
@@ -18,7 +17,6 @@ const MyFoodsPage = () => {
     }
   }, [user]);
 
-  // Fetch food items added by the logged-in user
   const fetchMyFoods = async () => {
     try {
       const response = await axios.get(
@@ -27,13 +25,12 @@ const MyFoodsPage = () => {
           withCredentials: true,
         }
       );
-      setFoods(response.data); // Corrected the reference here
+      setFoods(response.data);
     } catch (error) {
       console.error("Failed to fetch foods:", error);
     }
   };
 
-  // Handle food update by showing SweetAlert
   const handleFoodUpdate = (food) => {
     MySwal.fire({
       title: "Update Food Item",
@@ -58,7 +55,6 @@ const MyFoodsPage = () => {
         const quantity = document.getElementById("quantity").value;
         const description = document.getElementById("description").value;
 
-        // Validate the input
         if (!foodName || !price || !quantity || !description) {
           MySwal.showValidationMessage("Please fill out all fields.");
         }
@@ -79,7 +75,7 @@ const MyFoodsPage = () => {
           });
 
           toast.success("Food item updated successfully!");
-          fetchMyFoods(); // Fetch updated food list after update
+          fetchMyFoods(); 
         } catch (error) {
           toast.error("Failed to update food item. Please try again.");
         }
@@ -93,7 +89,6 @@ const MyFoodsPage = () => {
     });
   };
 
-  // Render the food items in the new card layout
   return (
     <div className="p-6 bg-base-300 min-h-screen">
       <div

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import UseAuth from "../../Hooks/UseAuth";
-import { toast } from 'react-hot-toast'; // Import toast from React Hot Toast
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
   const {
@@ -44,14 +44,14 @@ const Login = () => {
     try {
       setError("");
       await signUpWithGoogle();
-      toast.success("Google login successful! Redirecting..."); // Use React Hot Toast for success
+      toast.success("Google login successful! Redirecting..."); 
       setTimeout(() => {
         navigate(from);
       }, 3000);
     } catch (err) {
       setError(err.message);
-      toast.error(`Google login failed: ${err.message}`); // Use React Hot Toast for error
-    }
+      toast.error(`Google login failed: ${err.message}`); 
+      }
   };
 
   return (

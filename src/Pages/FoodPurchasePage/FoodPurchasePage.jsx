@@ -92,13 +92,11 @@ const FoodPurchasePage = () => {
     const updatedPurchaseCount = (food.PurchaseCount || 0) + 1;
 
     try {
-      // Update food quantity and purchase count in the database
       await axios.put(`${import.meta.env.VITE_API_BASE}foods/${id}`, {
         Quantity: updatedQuantity,
         PurchaseCount: updatedPurchaseCount,
       });
 
-      // Store purchase details in the purchase history
       const purchaseData = {
         foodId: id,
         foodName: food.FoodName,
@@ -120,10 +118,10 @@ const FoodPurchasePage = () => {
         Quantity: updatedQuantity,
         PurchaseCount: updatedPurchaseCount,
       }));
-      setQuantity(1); // Reset quantity
+      setQuantity(1);
 
-      // Navigate to the 'All Foods' page after successful purchase
-      navigate("/all-foods"); // Adjust the path based on your routing setup
+     
+      navigate("/all-foods");
     } catch (err) {
       console.error("Failed to complete the purchase:", err);
       toast.error("Failed to complete the purchase. Please try again.");

@@ -10,7 +10,6 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  updateProfile,
 } from "firebase/auth";
 
 export const AuthContext = createContext();
@@ -35,12 +34,6 @@ const AuthProvider = ({ children }) => {
         password
       );
       const user = userCredential.user;
-
-      // Update profile with name and photo
-      await updateProfile(user, {
-        displayName: name,
-        photoURL: photo,
-      });
 
       setUser(user);
       setSuccess("Registration successful!");
