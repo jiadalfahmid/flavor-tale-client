@@ -85,7 +85,7 @@ const FoodDetailsPage = () => {
   }
 
   return (
-    <div className="p-6 min-h-screen">
+    <div className="p-5 bg-base-300 min-h-screen">
       {/* Page Header */}
       <div
         className="text-white text-center py-12 mb-8"
@@ -97,7 +97,7 @@ const FoodDetailsPage = () => {
       </div>
 
       {/* Food Details Section */}
-      <div className="max-w-6xl mx-auto shadow-md rounded-lg overflow-hidden">
+      <div className="max-w-6xl bg-base-100 mb-12 mx-auto shadow-md rounded-lg overflow-hidden">
         <div className="flex flex-col md:flex-row">
           {/* Image Section */}
           <div className="flex-1">

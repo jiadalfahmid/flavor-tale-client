@@ -68,7 +68,7 @@ const AllFoodsPage = () => {
   };
 
   return (
-    <div className="p-6 bg-base-300">
+    <div className="p-5 bg-base-300">
       {/* Page Title */}
       <div
         className="bg-gradient-to-r to-yellow-500 from-red-500 text-white text-center py-12 mb-8"
@@ -83,7 +83,7 @@ const AllFoodsPage = () => {
           placeholder="Search food by name"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="p-2 border border-base-300 rounded-md w-80"
+          className="p-2 border border-gray-500 bg-base-100 rounded-md w-80"
         />
         <button
           onClick={handleSearch}
@@ -97,9 +97,9 @@ const AllFoodsPage = () => {
       </div>
 
       {/* Food Cards or Skeleton Loading */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {loading ? (
-          [...Array(6)].map((_, index) => <SkeletonCard key={index} />)
+          [...Array(8)].map((_, index) => <SkeletonCard key={index} />)
         ) : foods.length === 0 ? (
           <div className="col-span-full text-center py-8">
             <h2 className="text-2xl font-semibold text-gray-600">
@@ -112,37 +112,47 @@ const AllFoodsPage = () => {
         ) : (
           foods.map((food) => (
             <div
-              className="bg-base-100 shadow-md rounded-lg p-4 hover:shadow-lg transition"
-              key={food._id}
-            >
-              <img
-                src={food.FoodImage}
-                alt={food.FoodName}
-                className="w-full h-48 object-cover rounded-t-lg mb-4"
-              />
-              <h3 className="text-lg font-bold mb-2">{food.FoodName}</h3>
-              <p className="text-base-content mb-1">
-                <span className="font-semibold">Category:</span>{" "}
-                {food.FoodCategory}
-              </p>
-              <p className="text-base-content mb-1">
-                <span className="font-semibold">Price:</span> ${food.Price}
-              </p>
-              <p className="text-base-content mb-2">
-                <span className="font-semibold">Quantity:</span>{" "}
-                {food.Quantity > 0 ? `${food.Quantity} pcs` : "Out of Stock"}
-              </p>
-              <button
-                onClick={() => handleDetailsClick(food._id)}
-                className="w-full px-4 py-2 rounded-md text-white font-semibold hover:shadow-lg"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(to right, #FF5733, #FFD700)",
-                }}
+                className="bg-base-100 relative shadow-md rounded-lg p-4 hover:shadow-lg transition"
+                key={food._id}
               >
-                View Details
-              </button>
-            </div>
+                <img
+                  src={food.FoodImage}
+                  alt={food.FoodName}
+                  className="w-full h-48 object-cover rounded-t-md mb-4"
+                />
+                <h3 className="absolute top-4 right-4 px-4 pb-1 text-white rounded-e-md rounded-b-none bg-orange-500 text-xl font-bold mb-1">
+                      $ {food.Price}
+                    </h3>
+                <h3 className="text-lg font-bold mb-2">{food.FoodName}</h3>
+                <div className="flex gap-4">
+                  <div className="">
+                    <p className="text-base-content mb-1">
+                      <span className="font-semibold">Category:</span>{" "}
+                    </p>
+                    <p className="text-base-content mb-2">
+                      <span className="font-semibold">Quantity:</span>{" "}
+                    </p>
+                  </div>
+                  <div className="">
+                    <p className="text-base-content mb-1">
+                      {food.FoodCategory}
+                    </p>
+                    <p className="text-base-content mb-2">
+                     {food.Quantity}
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => handleDetailsClick(food._id)}
+                  className="w-full px-4 py-2 rounded-md text-white font-semibold hover:shadow-lg"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(to right, #FF5733, #FFD700)",
+                  }}
+                >
+                  View Details
+                </button>
+              </div>
           ))
         )}
       </div>

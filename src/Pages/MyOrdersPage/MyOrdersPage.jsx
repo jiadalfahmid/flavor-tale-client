@@ -40,6 +40,11 @@ const MyOrdersPage = () => {
       showCancelButton: true,
       confirmButtonText: "Yes, delete it!",
       cancelButtonText: "No, cancel!",
+      customClass: {
+        popup: 'bg-base-200 text-base-content rounded-lg',
+        confirmButton: 'bg-red-600 text-white hover:bg-red-700',
+        cancelButton: 'bg-orange-500 text-white hover:bg-orange-600', // Orange cancel button
+      },
     });
 
     if (confirmDelete.isConfirmed) {
@@ -56,7 +61,7 @@ const MyOrdersPage = () => {
   };
 
   return (
-    <div className="p-6 bg-base-200 min-h-screen">
+    <div className="p-5 bg-base-300 min-h-screen">
       <div
         className="bg-gradient-to-r to-yellow-500 from-red-500 text-white text-center py-12 mb-8"
       >
@@ -65,9 +70,9 @@ const MyOrdersPage = () => {
 
       {orders.length > 0 ? (
         <div className="overflow-x-auto">
-          <table className="table-auto w-full border-collapse border border-base-300 bg-base-100">
+          <table className="table-auto w-full border-collapse border border-base-200 bg-base-100">
             <thead>
-              <tr className="bg-base-300">
+              <tr className="bg-base-200">
                 <th className="border border-base-300 px-4 py-2 text-left">
                   #
                 </th>

@@ -49,7 +49,8 @@ const Register = () => {
   };
 
   return (
-    <div className="mx-auto min-h-screen flex justify-center items-center bg-base-200">
+    <div className="mx-auto min-h-screen flex gap-4 max-sm:flex-col-reverse justify-center items-center bg-base-300 py-12">
+      <div className="w-1/3"><img src="./register.png" alt="" /></div>
       <div className="card bg-base-100 w-full max-w-md shadow-xl rounded-lg">
         <form onSubmit={handleSubmit} className="card-body p-6">
           <h2 className="text-center text-3xl font-bold text-base-content mb-6">

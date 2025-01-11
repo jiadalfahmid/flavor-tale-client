@@ -43,12 +43,17 @@ const MyFoodsPage = () => {
           <label class="swal2-input-label text-base-content">Quantity</label>
           <input id="quantity" class="swal2-input" type="number" value="${food.Quantity}" />
           <label class="swal2-input-label text-base-content">Description</label>
-          <textarea id="description" class="swal2-input">${food.Description}</textarea>
+          <textarea id="description" class="swal2-input bg-base-200">${food.Description}</textarea>
         </div>
       `,
       showCancelButton: true,
       confirmButtonText: "Update",
       cancelButtonText: "Cancel",
+      customClass: {
+        popup: 'bg-base-100 text-base-content rounded-lg',
+        confirmButton: 'bg-orange-500 text-white hover:bg-orange-600',
+        cancelButton: 'bg-gray-300 text-black hover:bg-gray-400'
+      },
       preConfirm: () => {
         const foodName = document.getElementById("foodName").value;
         const price = document.getElementById("price").value;
@@ -75,16 +80,12 @@ const MyFoodsPage = () => {
           });
 
           toast.success("Food item updated successfully!");
-          fetchMyFoods(); 
+          fetchMyFoods();
         } catch (error) {
           toast.error("Failed to update food item. Please try again.");
         }
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        MySwal.fire(
-          "Cancelled",
-          "Your food item update is cancelled.",
-          "error"
-        );
+        toast.error("Your food item update is cancelled.")
       }
     });
   };

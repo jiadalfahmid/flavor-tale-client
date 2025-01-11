@@ -1,7 +1,7 @@
-import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { FaSun, FaMoon } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { BsMoon } from "react-icons/bs";
+import { TiWeatherSunny } from "react-icons/ti";
+import { NavLink, useNavigate } from "react-router-dom";
 import UseAuth from "../../Hooks/UseAuth";
 
 const Navbar = () => {
@@ -14,13 +14,15 @@ const Navbar = () => {
     try {
       await setTimeout(() => navigate("/"), 2000);
       await logout();
-    } catch (err) {
-    }
+    } catch (err) {}
   };
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
-    document.documentElement.setAttribute("data-theme", darkMode ? "light" : "dark");
+    document.documentElement.setAttribute(
+      "data-theme",
+      darkMode ? "dark" : "light"
+    );
   };
 
   const links = (
@@ -71,8 +73,8 @@ const Navbar = () => {
   );
 
   return (
-    <div className=" bg-base-200">
-      <div className="navbar mx-auto container">
+    <div className=" bg-base-100 sticky top-0 z-50 text-white">
+      <div className="navbar mx-auto container px-5">
         <div className="navbar-start">
           <div className="dropdown">
             <button className="btn btn-ghost lg:hidden">
@@ -95,8 +97,8 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <p className="normal-case text-xl font-bold text-base-content">
-            Flavor<span className="text-orange-500 italic">Tale</span>
+          <p className="normal-case text-xl md:text-3xl lg:text-4xl font-bold text-base-content logo bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text text-transparent w-[142px]">
+            Flavor Tale
           </p>
         </div>
 
@@ -109,25 +111,24 @@ const Navbar = () => {
             className="text-2xl cursor-pointer text-base-content btn hover:bg-base-300 btn-circle btn-ghost hover:text-orange-500"
             onClick={toggleDarkMode}
           >
-            {darkMode ? <FaSun /> : <FaMoon />}
+            {darkMode ? <BsMoon /> : <TiWeatherSunny />}
           </button>
 
           {user ? (
             <>
-              <div>
-                <div
-                  className="btn btn-ghost btn-circle avatar"
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
-                >
-                  <img
-                    src={`${user.photoURL}`}
+              <div className="dropdown dropdown-bottom dropdown-end rounded-full">
+                <div tabIndex={0} role="button" className="">
+                <img
+                    src={`${user?.photoURL}`}
                     alt={user?.displayName}
                     className="w-10 h-10 rounded-full"
                   />
                 </div>
-                {dropdownOpen && (
-                  <ul className="absolute z-50 top-16 bg-base-300 shadow-md rounded-md p-2 space-y-2">
-                    <li>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+                >
+                  <li>
                       <NavLink
                         to="/my-foods"
                         className="block px-4 py-2 text-base-content hover:bg-orange-500 hover:text-white rounded-md"
@@ -151,8 +152,7 @@ const Navbar = () => {
                         My Orders
                       </NavLink>
                     </li>
-                  </ul>
-                )}
+                </ul>
               </div>
               <button
                 onClick={handleLogout}

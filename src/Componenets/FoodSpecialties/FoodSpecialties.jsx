@@ -3,7 +3,7 @@ import 'react-tabs/style/react-tabs.css';
 
 const FoodSpecialties = () => {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-12 sm:px-12 lg:px-24">
+    <section className="container bg-base-300 mx-auto px-5">
       <h2 className="text-3xl font-bold text-center mb-8">Flavor Tales' Specialties</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* Left Side: Image */}
@@ -19,7 +19,7 @@ const FoodSpecialties = () => {
         <div className="flex flex-col justify-between space-y-6">
           <Tabs>
             <TabList className="flex space-x-6 border-b border-base-content pb-4">
-              <Tab className="text-lg font-semibold px-4 py-2 focus:outline-none hover:text-orange-500 focus:text-white focus:bg-gradient-to-r from-red-500 to-yellow-500">Main Course</Tab>
+              <Tab className="text-lg font-semibold px-4 py-2 focus:outline-none hover:text-orange-500 focus:text-white focus:bg-gradient-to-r focus:from-red-500 focus:to-yellow-500">Main Course</Tab>
               <Tab className="text-lg font-semibold px-4 py-2 focus:outline-none hover:text-orange-500 focus:text-white focus:bg-gradient-to-r from-red-500 to-yellow-500">Appetizer</Tab>
               <Tab className="text-lg font-semibold px-4 py-2 focus:outline-none hover:text-orange-500 focus:text-white focus:bg-gradient-to-r from-red-500 to-yellow-500">Salad</Tab>
             </TabList>

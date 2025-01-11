@@ -55,7 +55,7 @@ const Login = () => {
   };
 
   return (
-    <div className="mx-auto min-h-screen flex justify-center items-center bg-base-200">
+    <div className="mx-auto py-12 min-h-screen gap-4 max-sm:flex-col flex justify-center items-center bg-base-300">
       <div className="card bg-base-100 w-full max-w-md shadow-xl rounded-lg">
         <form onSubmit={handleSubmit} className="card-body p-6">
           <h2 className="text-center text-3xl font-bold text-base-content mb-6">
@@ -128,6 +128,9 @@ const Login = () => {
             Login with Google
           </button>
         </form>
+      </div>
+      <div className="w-1/3">
+        <img src="./login.png" alt="" />
       </div>
     </div>
   );

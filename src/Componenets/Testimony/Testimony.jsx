@@ -40,7 +40,7 @@ const testimonials = [
 
 const Testimony = () => {
   return (
-    <div className="p-8 bg-base-100">
+    <div className="px-5 bg-base-300 py-16">
       <h2 className="text-3xl font-bold text-center mb-6">What Our Customers Say</h2>
       <Swiper
         effect={"coverflow"}
@@ -53,13 +53,14 @@ const Testimony = () => {
           depth: 100,
           modifier: 1,
           slideShadows: true,
+          slidesPerView: 4,
         }}
         autoplay={{
          delay: 3000,
          disableOnInteraction: false,
        }}
         modules={[EffectCoverflow, Autoplay]}
-        className="mySwiper"
+        className="mySwiper w-auto"
       >
         {testimonials.map((testimonial, index) => (
           <SwiperSlide key={index} className="flex flex-col text-center items-center">

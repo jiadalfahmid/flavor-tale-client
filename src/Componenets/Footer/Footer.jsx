@@ -1,76 +1,88 @@
 import React from "react";
+import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div>
-      <footer className="footer footer-center bg-base-200 text-base-content p-10">
-        <aside>
-        <p className="normal-case text-xl font-bold text-base-content">
-            Flavor<span className="text-orange-500 italic">Tale</span></p>
-          <p className="font-bold">
-            Fine cuisine
+    <footer className="p-10 bg-base-100">
+      <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        {/* Brand Section */}
+        <div>
+          <h1 className="text-4xl font-bold logo bg-gradient-to-r from-red-500 to-yellow-500 text-transparent bg-clip-text w-[142px]">
+            Flavor Tale
+          </h1>
+          <p className="mt-2 text-sm">
+            Indulge in a world of flavors. Find your favorite dish now!
           </p>
-          <p>info@flavortale.com</p>
-          <p>Copyright © {new Date().getFullYear()} - All rights reserved</p>
-        </aside>
-        <nav>
-          <div className="grid grid-flow-col gap-4">
+          <div className="flex gap-4 mt-4">
             <a
-              href="https://twitter.com/"
+              href="https://www.facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-orange-500"
-              aria-label="Twitter"
-              className="hover:text-orange-500"
+              className="hover:text-orange-500 cursor-pointer"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                className="fill-current"
-              >
-                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
-              </svg>
+              <FaFacebookF />
             </a>
             <a
-              href="https://youtube.com/"
+              href="https://www.twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-orange-500"
-              aria-label="YouTube"
+              className="hover:text-orange-500 cursor-pointer"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                className="fill-current"
-              >
-                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-              </svg>
+              <FaTwitter />
             </a>
             <a
-              href="https://facebook.com/"
+              href="https://www.instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-orange-500"
-              aria-label="Facebook"
+              className="hover:text-orange-500 cursor-pointer"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                className="fill-current"
-              >
-                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-              </svg>
+              <FaInstagram />
+            </a>
+            <a
+              href="https://www.youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-orange-500 cursor-pointer"
+            >
+              <FaYoutube />
             </a>
           </div>
-        </nav>
-      </footer>
-    </div>
+        </div>
+
+        {/* Working Hours Section */}
+        <div>
+          <h2 className="font-bold text-lg">WORKING HOURS</h2>
+          <p>Monday - Friday: 09:00 - 22:00</p>
+          <p>Saturday: 11:00 - 00:00</p>
+          <p>Sunday: 11:00 - 23:00</p>
+          <p className="mt-2 font-bold">* Happy hour: 17:00 - 21:00</p>
+        </div>
+
+        {/* Address Section */}
+        <div>
+          <h2 className="font-bold text-lg">OUR ADDRESS</h2>
+          <p>Silk St, Barbican, London EC2Y 8DS, UK</p>
+          <p>+39-055-123456</p>
+          <p>booking@flavor-tale.com</p>
+        </div>
+
+        {/* Newsletter Section */}
+        <div>
+          <h2 className="font-bold text-lg">NEWSLETTER</h2>
+          <p className="text-sm">Receive the latest news from us.</p>
+          <div className="mt-4 flex">
+            <input
+              type="email"
+              placeholder="Your Email Address"
+              className="p-2 flex-grow rounded-l-md border border-gray-500 bg-base-100 outline-none"
+            />
+            <button className="p-2 bg-orange-500 text-white rounded-r-md">
+              →
+            </button>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 };
 

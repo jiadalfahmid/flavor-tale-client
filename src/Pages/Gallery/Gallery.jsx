@@ -76,13 +76,13 @@ const Gallery = () => {
   };
 
   return (
-    <div className="min-h-screen bg-base-100 p-8">
+    <div className="min-h-screen bg-base-300 p-5">
       <div
         className="bg-gradient-to-r to-yellow-500 from-red-500 text-white text-center py-12 mb-8"
       >
         <h1 className="text-4xl font-bold">Gallery</h1>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 my-12">
         {foodImages.map((image, index) => (
           <div
             key={index}

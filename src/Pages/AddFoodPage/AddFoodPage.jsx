@@ -72,14 +72,14 @@ const AddFoodPage = () => {
   };
 
   return (
-    <div className="p-4 sm:p-6 bg-base-300 min-h-screen">
+    <div className="p-5 bg-base-300 min-h-screen">
       {/* Header */}
-      <div className="bg-gradient-to-r from-orange-500 to-yellow-400 text-white text-center py-8 mb-6">
+      <div className="bg-gradient-to-r from-red-500 to-yellow-400 text-white text-center py-12 mb-8">
         <h1 className="text-4xl font-bold">Add New Food Item</h1>
       </div>
 
       {/* Form Section */}
-      <div className="max-w-5xl mx-auto bg-base-100 rounded-lg shadow-md p-6">
+      <div className="max-w-5xl mx-auto bg-base-100 rounded-lg shadow-md p-6 my-12">
         <h2 className="text-2xl font-bold mb-6 text-base-content">
           Food Details
         </h2>
@@ -96,7 +96,7 @@ const AddFoodPage = () => {
               type="text"
               value={foodName}
               onChange={(e) => setFoodName(e.target.value)}
-              className="w-full px-4 py-2 border rounded-md"
+              className="w-full px-4 py-2 border rounded-md bg-base-200"
               placeholder="Enter food name"
               required
             />
@@ -110,7 +110,7 @@ const AddFoodPage = () => {
               type="text"
               value={foodCategory}
               onChange={(e) => setFoodCategory(e.target.value)}
-              className="w-full px-4 py-2 border rounded-md"
+              className="w-full px-4 py-2 border rounded-md bg-base-200"
               placeholder="e.g., Dessert, Main Course"
               required
             />
@@ -124,7 +124,7 @@ const AddFoodPage = () => {
               type="url"
               value={foodImage}
               onChange={(e) => setFoodImage(e.target.value)}
-              className="w-full px-4 py-2 border rounded-md"
+              className="w-full px-4 py-2 border rounded-md bg-base-200"
               placeholder="Paste image URL"
               required
             />
@@ -139,7 +139,7 @@ const AddFoodPage = () => {
               value={quantity}
               onChange={(e) => setQuantity(Number(e.target.value))}
               min="1"
-              className="w-full px-4 py-2 border rounded-md"
+              className="w-full px-4 py-2 border rounded-md bg-base-200"
               placeholder="Enter quantity"
               required
             />
@@ -154,7 +154,7 @@ const AddFoodPage = () => {
               value={price}
               onChange={(e) => setPrice(Number(e.target.value))}
               min="0"
-              className="w-full px-4 py-2 border rounded-md"
+              className="w-full px-4 py-2 border rounded-md bg-base-200"
               placeholder="Enter price in USD"
               required
             />
@@ -168,7 +168,7 @@ const AddFoodPage = () => {
               type="text"
               value={foodOrigin}
               onChange={(e) => setFoodOrigin(e.target.value)}
-              className="w-full px-4 py-2 border rounded-md"
+              className="w-full px-4 py-2 border rounded-md bg-base-200"
               placeholder="e.g., Italian, Mexican"
               required
             />
@@ -181,7 +181,7 @@ const AddFoodPage = () => {
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-4 py-2 border rounded-md"
+              className="w-full px-4 py-2 border rounded-md bg-base-200"
               placeholder="Describe the food item"
               required
             />

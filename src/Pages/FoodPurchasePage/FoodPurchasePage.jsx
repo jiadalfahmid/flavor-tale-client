@@ -143,7 +143,7 @@ const FoodPurchasePage = () => {
   }
 
   return (
-    <div className="p-6 bg-base min-h-screen">
+    <div className="p-5 bg-base-300 min-h-screen">
       <div
         className="bg-gradient-to-r text-white text-center py-12 mb-8"
         style={{
@@ -153,7 +153,7 @@ const FoodPurchasePage = () => {
         <h1 className="text-4xl font-bold">Purchase {food.FoodName}</h1>
       </div>
 
-      <div className="max-w-4xl mx-auto bg-base-200 shadow-md rounded-lg overflow-hidden">
+      <div className="max-w-4xl mx-auto bg-base-100 shadow-md rounded-lg overflow-hidden">
         <div className="p-6">
           {/* Food Information */}
           <h2 className="text-2xl font-bold mb-4 text-base-content">
@@ -182,7 +182,7 @@ const FoodPurchasePage = () => {
               type="number"
               value={quantity}
               min="1"
-              className="w-full px-4 py-2 border rounded-md text-base-content"
+              className="w-full px-4 py-2 border rounded-md text-base-content bg-base-200"
               onChange={(e) => setQuantity(Number(e.target.value))}
             />
           </div>
